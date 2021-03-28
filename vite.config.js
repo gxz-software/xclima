@@ -1,6 +1,7 @@
 import { resolve } from 'path'
-// import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+// import { getThemeVariables } from 'ant-design-vue/dist/theme'
+
 
 export default {
 
@@ -14,6 +15,10 @@ export default {
 
             less: {
 
+                // modifyVars: getThemeVariables({
+
+                //     dark: false,
+                // }),
                 javascriptEnabled: true
             }
         }

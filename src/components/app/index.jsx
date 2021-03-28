@@ -4,12 +4,15 @@ import CardWeather from '../card-weather'
 
 export default defineComponent({
 
+    setup() {
+
+    },
     render() {
 
         return (
             <a-layout id="main">
 
-                <Header />
+                <Header onThemeDark={(value) => console.log('dark theme', value)} />
 
                 <a-layout-content id="container">
                     {/* <div style='background: #ffff; padding: 10px; min-height:500px '> */}
