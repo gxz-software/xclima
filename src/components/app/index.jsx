@@ -1,25 +1,29 @@
 import { defineComponent } from 'vue'
-import './index.css'
+import Header from './header'
+import CardWeather from '../card-weather'
 
 export default defineComponent({
 
     render() {
 
         return (
-            <a-layout class="layout">
-                <a-layout-header>
-                    <div class="logo" />
-                    <a-menu theme="dark" mode="horizontal" style="line-height: 64px">
-                        Header
-                    </a-menu>
-                </a-layout-header>
+            <a-layout id="main">
 
-                <a-layout-content style='padding: 0 50px'>
-                    <div style='background: #c3c3c3; padding: 10px; min-height:500px '></div>
+                <Header />
+
+                <a-layout-content id="container">
+                    {/* <div style='background: #ffff; padding: 10px; min-height:500px '> */}
+
+
+                    <a-row justify='center' style='margin-top: 2em  '>
+                        <CardWeather />
+                    </a-row>
+
+                    {/* </div> */}
                 </a-layout-content>
-                <a-layout-footer style='text-align: center'>
-                    Ant Design ©2018 Created by Ant UED
-                </a-layout-footer>
+                {/* <a-layout-footer style='text-align: center'>
+                        GXZ © 2016
+                    </a-layout-footer> */}
             </a-layout>
         )
     }
