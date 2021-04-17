@@ -13,7 +13,7 @@
     > .header {
 
         height: @layout-header-height;
-        background: @layout-header-background;
+        // background: @layout-header-background;
         >.ant-menu {
 
             height: 100%;
@@ -32,6 +32,33 @@
             .name-app {
 
                 font-size: 1.4em;
+            }
+        }
+    }
+
+    #container {
+
+        .x-weather {
+
+            padding: 4em;
+        }
+
+        .x-week {
+
+            padding: 2em;
+            height: 300px;
+
+            > .welcome-content {
+
+                border: solid 1px green;
+                background: @card-background;
+                margin: auto;
+                padding: 1.5em;
+            }
+
+            &-content {
+
+                background: @component-background;
             }
         }
     }
@@ -56,8 +83,9 @@
     }
     .ant-layout-content {
         
-        background: @body-background;
+        // background: @body-background;
         // background: #2b2b2b;
+        background: #191a1a;
     }
 
     .ant-card {

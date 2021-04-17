@@ -4,7 +4,8 @@ import './index.less'
 
 export default defineComponent({
 
-    setup() {
+    emits: ['click'],
+    setup(props, { emit }) {
 
         const state = reactive({
 
@@ -17,9 +18,12 @@ export default defineComponent({
             weather: {},
         })
 
+        const handleClick = () => emit('click', state.city);
+
         return {
 
             state,
+            handleClick,
         }
     },
     render() {
@@ -43,6 +47,7 @@ export default defineComponent({
                 bordered
                 hoverable
                 v-slots={slots}
+                onClick={this.handleClick}
             >
                 <a-row>
                     <a-col class='col-data' span='12'>

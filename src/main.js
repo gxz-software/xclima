@@ -2,12 +2,12 @@ import {
 
     Button,
     Card, Col,
-    Input, Layout,
+    Input, Layout, List,
     Menu,
     PageHeader,
     Radio, Row,
     Space, Switch,
-    Tag
+    Tag,
 
 } from 'ant-design-vue'
 
@@ -31,7 +31,8 @@ const uses = [
     Radio,
     Card,
     Tag,
-    Space
+    Space,
+    List,
 ]
 
 uses.map(component => Vue.use(component))

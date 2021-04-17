@@ -1,7 +1,7 @@
-import { defineComponent, ref } from 'vue'
+import { defineComponent, reactive, ref } from 'vue'
 import Header from './Header'
 import CardWeather from '../card-weather'
-// import Content from './content'
+import WeekWeather from '../week-weather'
 
 export default defineComponent({
 
@@ -11,10 +11,19 @@ export default defineComponent({
 
         const handleTheme = (is) => darkTheme.value = is
 
+        const currentCity = reactive({
+
+            name: '',
+        })
+
+        const handleClick = (value) => currentCity.name = value
+
         return {
 
             darkTheme,
             handleTheme,
+            currentCity,
+            handleClick,
         }
 
     },
@@ -26,13 +35,22 @@ export default defineComponent({
                 <Header onChangeTheme={this.handleTheme} />
 
                 <a-layout-content id="container">
-                    <div style={{ padding: '100px' }}>
-                        <CardWeather />
-                    </div>
+                    <a-row class='x-weather' style='border: solid 1px red' justify='center'>
+
+                        <CardWeather onClick={this.handleClick} />
+
+                    </a-row>
+
+                    <a-row class='x-week' style='border: solid 1px blue'>
+
+                        <WeekWeather city={this.currentCity.name} />
+
+                    </a-row>
+
                 </a-layout-content>
                 {/* <a-layout-footer style='text-align: center'>
-                        GXZ © 2016
-                    </a-layout-footer> */}
+                    GXZ © 2016
+                </a-layout-footer> */}
             </a-layout>
         )
     }
