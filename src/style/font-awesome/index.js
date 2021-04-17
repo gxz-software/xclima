@@ -3,7 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import {
 
-    fasHome
+    fasHome,
+    fasMoon,
+    fasSun
+
 } from './icons/fas'
 
 import {
@@ -19,6 +22,8 @@ library.add(
 
     //FAS
     fasHome,
+    fasMoon,
+    fasSun,
 
     //FAD
     falWind,
