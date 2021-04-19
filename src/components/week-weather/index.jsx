@@ -5,11 +5,19 @@ import './index.less'
 const Welcome = () => (
 
     // <a-row class="welcome-content">
-    <div class='welcome-content'>
-        <h1>Bem vindo!</h1>
-        <p>xWeather é um simples aplicativo de clima com base na sua localização(latitude, longitude).</p>
-        <p>Esse app é apenas experimental, para mais informações visite o repositório no <a href="#" target="_blank">Github</a>.</p>
-    </div>
+    // <div class='welcome-content'>
+    //     <h1>Bem vindo!</h1>
+    //     <p>Esse app é apenas experimental, para mais informações visite o repositório no <a href="#" target="_blank">Github</a>.</p>
+    // </div>
+    <a-col {...{ sm: 24, md: 18, lg: 12, xl: 14 }} style='margin: 0 auto'>
+        <a-card
+            class='welcome-content'
+            bordered='false'
+        >
+            <h1>Bem vindo!</h1>
+            <p>Esse app é apenas experimental, para mais informações visite o repositório no <a href="#" target="_blank">Github</a>.</p>
+        </a-card>
+    </a-col>
     // </a-row>
 )
 
