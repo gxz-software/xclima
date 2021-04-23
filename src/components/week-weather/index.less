@@ -1,4 +1,4 @@
-// @import "../../node_modules/ant-design-vue/es/style/themes/default";
+@paddingWeek: 1.5em;
 
 .fade-enter-active, .fade-leave-active {
 	transition: opacity 0.5s linear;
@@ -6,4 +6,60 @@
 
 .fade-enter-from, .fade-leave-to {
 	opacity: 0;
+}
+
+
+.x-week {
+
+	padding: 2em;
+	// border:solid 1px blue;
+
+	.card-welcome {
+		
+		border-color: rgba(0, 0, 0, 0.09);
+		box-shadow: 0 2px 8px rgb(0 0 0 / 9%);
+	}
+
+	&-row {
+		
+		width: 100%
+	}
+
+	.week-days {
+
+		padding: @paddingWeek;
+
+		&-item {
+
+			text-align: center;
+			
+			&-icon {
+
+				width: 8em;
+			}
+
+			&-description {
+
+				text-transform: capitalize;
+			}
+		}
+	}
+}
+
+//dark
+.dark-theme {
+	
+	.x-week {
+		
+		.card-welcome {
+
+			border-color: rgba(0, 0, 0, 0.09);
+			box-shadow: 0 1px 2px -2px rgb(0 0 0 / 64%), 0 3px 6px 0 rgb(0 0 0 / 48%), 0 5px 12px 4px rgb(0 0 0 / 36%);
+		}
+		
+		.week-days {
+
+			padding: @paddingWeek;
+		}
+	}
 }

@@ -1,5 +1,5 @@
 import { defineComponent, reactive } from 'vue'
-import icon from '../../assets/weather-animated/03d.svg'
+import icon from '@/assets/weather-animated/03d.svg'
 import './index.less'
 
 export default defineComponent({
@@ -44,6 +44,7 @@ export default defineComponent({
         return (
 
             <a-card
+                class='card-weather'
                 bordered
                 hoverable
                 v-slots={slots}

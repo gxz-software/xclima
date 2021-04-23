@@ -35,13 +35,13 @@ export default defineComponent({
                 <Header onChangeTheme={this.handleTheme} />
 
                 <a-layout-content id="container">
-                    <a-row class='x-weather' style='border: solid 1px red' justify='center'>
+                    <a-row class='x-weather' justify='center'>
 
                         <CardWeather onClick={this.handleClick} />
 
                     </a-row>
 
-                    <a-row class='x-week' style='border: solid 1px blue'>
+                    <a-row class='x-week'>
 
                         <WeekWeather city={this.currentCity.name} />
 

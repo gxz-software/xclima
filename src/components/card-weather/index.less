@@ -1,52 +1,56 @@
-.ant-card {
+.x-weather {
 
-    width: 100%;
-    max-width: 21em;
-    border-radius: 8px;
+    padding: 4em;
+    
+    .ant-card {
 
-    .ant-tag {
+        width: 100%;
+        max-width: 21em;
 
-        font-size: 14px;
-    }
+        .ant-tag {
 
-  
-    &-head {
-
-        border-bottom: none;
-        .ant-card-extra {
-
-            font-size: 18px;
+            font-size: 14px;
         }
-    }
+    
+        &-head {
 
-    &-cover {
-        > div {
-            
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-            .img-icon {
+            border-bottom: none;
+            .ant-card-extra {
 
-                width: 10em;
-                height: 10em;
-                margin: 0 auto;
+                font-size: 18px;
             }
-            > span {
+        }
+
+        &-cover {
+            > div {
                 
-                text-transform: capitalize;
-            }
-        }
-    }
-    .ant-card-body {
-        .ant-row {
-            .col-data {
-                > div {
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                .img-icon {
 
-                    display: flex;
-                    flex-direction: column;
+                    width: 10em;
+                    height: 10em;
+                    margin: 0 auto;
+                }
+                > span {
+                    
+                    text-transform: capitalize;
                 }
             }
-        }        
+        }
+
+        .ant-card-body {
+            .ant-row {
+                .col-data {
+                    > div {
+
+                        display: flex;
+                        flex-direction: column;
+                    }
+                }
+            }        
+        }
     }
 }
 

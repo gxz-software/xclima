@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import {
 
-    fasHome,
     fasMoon,
     fasSun
 
@@ -13,7 +12,9 @@ import {
 
     falWind,
     falHumidity,
-    falClouds
+    falClouds,
+    falTemperatureHot,
+    falTemperatureFrigid
 
 } from './icons/fal'
 
@@ -21,7 +22,6 @@ import {
 library.add(
 
     //FAS
-    fasHome,
     fasMoon,
     fasSun,
 
@@ -29,6 +29,8 @@ library.add(
     falWind,
     falHumidity,
     falClouds,
+    falTemperatureHot,
+    falTemperatureFrigid,
 )
 
 export default function (app) {
