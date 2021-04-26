@@ -70,8 +70,8 @@ export default defineComponent({
                             </a-space>
                         </a-space>
                     </a-col>
-                    <a-col span='12' style='text-align: end'>
-                        <span style='font-size: 48px; display:block; margin-top: 10px'>27º</span>
+                    <a-col class='col-degress' span='12'>
+                        <span class='degress-current'>27º</span>
                     </a-col>
                 </a-row>
             </a-card>

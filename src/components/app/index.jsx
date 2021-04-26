@@ -48,9 +48,9 @@ export default defineComponent({
                     </a-row>
 
                 </a-layout-content>
-                {/* <a-layout-footer style='text-align: center'>
-                    GXZ © 2016
-                </a-layout-footer> */}
+                <a-layout-footer style='text-align: center'>
+                    © <strong>GXZ</strong> 2016 - 2021.
+                </a-layout-footer>
             </a-layout>
         )
     }

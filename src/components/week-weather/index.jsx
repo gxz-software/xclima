@@ -27,13 +27,7 @@ export default defineComponent({
     },
     setup(props) {
 
-
-
-        return {
-
-
-        }
-
+        return {}
     },
     render() {
 
@@ -45,7 +39,7 @@ export default defineComponent({
 
                     <a-row class='x-week-row' justify='center' v-show={this.city}>
 
-                        <a-col class='ant-card' {...{ sm: 24, md: 24, lg: 24, xl: 16 }} >
+                        <a-col class='ant-card' {...{ sm: 22, md: 22, lg: 22, xl: 22 }} >
                             <a-list
                                 class='week-days'
                                 //loading={this.loading}
