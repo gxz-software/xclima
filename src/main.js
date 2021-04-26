@@ -6,7 +6,7 @@ import {
     Menu,
     PageHeader,
     Radio, Row,
-    Space, Switch,
+    Space, Switch, Spin,
     Tag,
 
 } from 'ant-design-vue'
@@ -33,6 +33,7 @@ const uses = [
     Tag,
     Space,
     List,
+    Spin,
 ]
 
 uses.map(component => Vue.use(component))

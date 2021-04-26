@@ -1,4 +1,4 @@
-import { defineComponent, Transition } from 'vue'
+import { defineComponent, Transition, ref, watch } from 'vue'
 import { WEEKDATA } from './data'
 import icon from '@/assets/weather-animated/03d.svg'
 import './index.less'
@@ -11,9 +11,12 @@ const Welcome = () => (
             bordered={false}
         >
             <h1>Bem vindo!</h1>
-            <p>xClima é um simples aplicativo de clima com base na sua localização(latitude, longitude).</p>
-            <p>Clique no card da cidade para mostrar a previsão da semana.</p>
-            <p>Esse app é apenas experimental, para mais informações visite o repositório no <a href='#' target='_blank'>Github</a>.</p>
+            <p>xClima é um simples aplicativo de clima com base na sua localização(latitude, longitude) desenvolvido com dados meteorológicos da
+                <a href="https://openweathermap.org/" target='_blank'> OpenWeatherMap</a>.
+                Certifique-se de conceder permissão á sua localização.
+            </p>
+
+            <p>Clique sobre o card principal para visualizar o clima dos próximos 6 dias. Esse app é apenas experimental, para mais informações visite o repositório no <a href='#' target='_blank'>Github</a>.</p>
         </a-card>
     </a-col>
 )
@@ -27,7 +30,24 @@ export default defineComponent({
     },
     setup(props) {
 
-        return {}
+        let loading = ref(true)
+
+        watch(() => props.city, (value, oldV) => {
+
+            if (value) {
+
+                setTimeout(() => {
+
+                    loading.value = false
+
+                }, 3000)
+            }
+        })
+
+        return {
+
+            loading,
+        }
     },
     render() {
 
@@ -39,11 +59,12 @@ export default defineComponent({
 
                     <a-row class='x-week-row' justify='center' v-show={this.city}>
 
-                        <a-col class='ant-card' {...{ sm: 22, md: 22, lg: 22, xl: 22 }} >
+                        <a-col class='ant-card' {...{ sm: 22, md: 22, lg: 22, xl: 22 }}>
+
                             <a-list
                                 class='week-days'
-                                //loading={this.loading}
                                 dataSource={WEEKDATA}
+                                loading={this.loading}
                                 grid={{ gutter: 0, xs: 1, sm: 2, md: 3, lg: 3, xl: 6 }}
                                 renderItem={({ item }) => (
 

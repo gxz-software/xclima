@@ -18,6 +18,14 @@
 		
 		border-color: rgba(0, 0, 0, 0.09);
 		box-shadow: 0 2px 8px rgb(0 0 0 / 9%);
+
+		.ant-card-body {
+
+			> h1 {
+
+				text-align: center;
+			}
+		}
 	}
 
 	&-row {
@@ -41,6 +49,23 @@
 			&-description {
 
 				text-transform: capitalize;
+			}
+		}
+
+		.ant-spin-nested-loading {
+
+			.ant-spin {
+				
+				> svg {
+
+					font-size: 64px;
+					top: 40%;
+				}
+
+				&-blur {
+					
+					opacity: 0.1;
+				}
 			}
 		}
 	}

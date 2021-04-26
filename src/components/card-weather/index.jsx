@@ -1,6 +1,12 @@
 import { defineComponent, reactive } from 'vue'
+import { Spin } from 'ant-design-vue'
 import icon from '@/assets/weather-animated/03d.svg'
 import './index.less'
+
+Spin.setDefaultIndicator({
+
+    indicator: () => <fa class='x-spinner' icon={['fad', 'eclipse-alt']} spin />
+})
 
 export default defineComponent({
 
@@ -16,9 +22,16 @@ export default defineComponent({
             wind: 0,
             clouds: 0,
             weather: {},
+            loading: true,
         })
 
         const handleClick = () => emit('click', state.city);
+
+        setTimeout(() => {
+
+            state.loading = !state.loading;
+
+        }, 3000)
 
         return {
 
@@ -41,13 +54,22 @@ export default defineComponent({
             )
         }
 
+        const loading = {
+
+            default: () => (
+                <div class='content-spinner'>
+                    <a-spin spinning={true} size='large' tip='Carregando...' />
+                </div>
+            )
+        }
+
         return (
 
             <a-card
                 class='card-weather'
                 bordered
                 hoverable
-                v-slots={slots}
+                v-slots={this.state.loading ? loading : slots}
                 onClick={this.handleClick}
             >
                 <a-row>
