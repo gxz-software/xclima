@@ -2,6 +2,7 @@ import { defineComponent, reactive, ref } from 'vue'
 import Header from './Header'
 import CardWeather from '../card-weather'
 import WeekWeather from '../week-weather'
+import ChangeCity from '../change-city'
 
 export default defineComponent({
 
@@ -38,6 +39,8 @@ export default defineComponent({
                     <a-row class='x-weather' justify='center'>
 
                         <CardWeather onClick={this.handleClick} />
+
+                        <ChangeCity style='margin-left: 35px;' />
 
                     </a-row>
 

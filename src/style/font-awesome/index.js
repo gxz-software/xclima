@@ -5,6 +5,7 @@ import {
 
     fasMoon,
     fasSun,
+    fasSearch
 
 } from './icons/fas'
 
@@ -26,6 +27,7 @@ library.add(
     //FAS
     fasMoon,
     fasSun,
+    fasSearch,
 
     //FAL
     falWind,
