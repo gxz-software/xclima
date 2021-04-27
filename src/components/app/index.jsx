@@ -1,4 +1,5 @@
-import { defineComponent, reactive, ref } from 'vue'
+import { defineComponent, reactive, ref, onBeforeMount } from 'vue'
+import { notification } from 'ant-design-vue'
 import Header from './Header'
 import CardWeather from '../card-weather'
 import WeekWeather from '../week-weather'
@@ -10,21 +11,95 @@ export default defineComponent({
 
         const darkTheme = ref(false)
 
-        const handleTheme = (is) => darkTheme.value = is
+        const location = reactive({
 
-        const currentCity = reactive({
+            city: '',
+            coords: {
 
-            name: '',
+                lat: 0,
+                lon: 0,
+            },
+            week: {
+
+                visible: false,
+                coords: {},
+            }
         })
 
-        const handleClick = (value) => currentCity.name = value
+        const handleTheme = (is) => darkTheme.value = is
+
+        const getCoords = () => {
+
+            return new Promise((resolve, reject) => {
+
+                if (!('geolocation' in navigator)) {
+
+                    reject(new Error('O serviço de geolocation não é suportado pelo seu navegador.'))
+                }
+
+                navigator.geolocation.getCurrentPosition(({ coords }) => {
+
+                    resolve(coords)
+
+                }, error => reject(error))
+            })
+        }
+
+        const handleClick = (value) => {
+
+            Object.assign(location.week, {
+
+                visible: true,
+                coords: value
+            })
+        }
+
+        const handleChangeCity = (city) => {
+
+            if (location.week.visible) {
+
+                Object.assign(location.week, {
+
+                    visible: false,
+                    coords: {}
+                })
+            }
+
+            location.city = city
+        }
+
+        onBeforeMount(() => {
+
+            getCoords().then(({ latitude, longitude }) => {
+
+                location.coords.lat = latitude
+                location.coords.lon = longitude
+
+                notification.success({ message: 'Geolocation OK!!' })
+
+            }).catch(err => {
+
+                let description = ''
+
+                if (err.code && err.code === 1) description = 'Não foi possível obter a informação sobre geolocalização por que a página não possui permissão para fazê-lo.'
+
+                else description = err
+
+                notification.error({
+
+                    message: 'Erro de localização',
+                    description,
+                })
+            })
+        })
 
         return {
 
             darkTheme,
+            location,
             handleTheme,
-            currentCity,
             handleClick,
+            handleChangeCity,
         }
 
     },
@@ -38,19 +113,24 @@ export default defineComponent({
                 <a-layout-content id="container">
                     <a-row class='x-weather' justify='center'>
 
-                        <CardWeather onClick={this.handleClick} />
+                        <CardWeather
+                            city={this.location.city}
+                            data={this.location}
+                            onClick={this.handleClick}
+                        />
 
-                        <ChangeCity style='margin-left: 35px;' />
+                        <ChangeCity style='margin-left: 35px;' onChangeCity={this.handleChangeCity} />
 
                     </a-row>
 
                     <a-row class='x-week'>
 
-                        <WeekWeather city={this.currentCity.name} />
+                        <WeekWeather visible={this.location.week.visible} data={this.location.week.coords} />
 
                     </a-row>
 
                 </a-layout-content>
+
                 <a-layout-footer style='text-align: center'>
                     © <strong>GXZ</strong> 2016 - 2021.
                 </a-layout-footer>

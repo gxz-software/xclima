@@ -4,19 +4,23 @@ import './index.less'
 
 export default defineComponent({
 
-    setup() {
+    emits: ['changeCity'],
+    setup(props, { emit }) {
 
         const city = ref('')
+        const loading = ref(false)
 
         const handleSearch = () => {
 
+            if (!city.value) return
 
-            console.log(city.value)
+            emit('changeCity', city.value)
         }
 
         return {
 
             city,
+            loading,
             handleSearch
         }
     },
@@ -32,7 +36,7 @@ export default defineComponent({
 
                 <a-button
                     type='primary'
-                    loading={false}
+                    loading={this.loading}
                     onClick={this.handleSearch}
                     v-slots={{
 
