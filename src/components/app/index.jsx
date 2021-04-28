@@ -120,20 +120,13 @@ export default defineComponent({
                         />
 
                         <ChangeCity style='margin-left: 35px;' onChangeCity={this.handleChangeCity} />
-
                     </a-row>
 
-                    <a-row class='x-week'>
+                    <div class='x-week'>
 
                         <WeekWeather visible={this.location.week.visible} data={this.location.week.coords} />
-
-                    </a-row>
-
+                    </div>
                 </a-layout-content>
-
-                <a-layout-footer style='text-align: center'>
-                    © <strong>GXZ</strong> 2016 - 2021.
-                </a-layout-footer>
             </a-layout>
         )
     }

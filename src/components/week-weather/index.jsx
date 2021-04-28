@@ -87,47 +87,45 @@ export default defineComponent({
     render() {
 
         return (
-            <>
-                <Welcome v-show={!this.visible} />
 
-                <Transition name='fade'>
+            <Transition name='switch' mode='out-in'>
 
-                    <a-row class='x-week-row' justify='center' v-show={this.visible}>
+                {
+                    !this.visible ? (<Welcome />) : (
 
-                        <a-col class='ant-card' {...{ sm: 22, md: 22, lg: 22, xl: 22 }}>
+                        <div class='x-week-content'>
+                            <a-col class='ant-card' {...{ sm: 22, md: 22, lg: 22, xl: 22 }}>
+                                <a-list
+                                    class='week-days'
+                                    dataSource={this.weatherWeek}
+                                    loading={this.loading}
+                                    grid={{ gutter: 0, xs: 1, sm: 2, md: 3, lg: 3, xl: 6 }}
+                                    renderItem={({ item }) => (
 
-                            <a-list
-                                class='week-days'
-                                dataSource={this.weatherWeek}
-                                loading={this.loading}
-                                grid={{ gutter: 0, xs: 1, sm: 2, md: 3, lg: 3, xl: 6 }}
-                                renderItem={({ item }) => (
+                                        <a-list-item class='week-days-item'>
 
-                                    <a-list-item class='week-days-item'>
+                                            <h2 class='week-days-item-title'>{item.dayLabel}</h2>
 
-                                        <h2 class='week-days-item-title'>{item.dayLabel}</h2>
+                                            <a-space direction='vertical' align='center'>
+                                                <img src={pathIcon(item.weather.icon)} class='week-days-item-icon' />
 
-                                        <a-space direction='vertical'>
-                                            <img src={pathIcon(item.weather.icon)} class='week-days-item-icon' />
+                                                <span class='week-days-item-degress'>
+                                                    {item.temp.max}º <fa icon={['fad', 'temperature-high']} size='lg' style={{ '--fa-primary-color': '#f5222d', marginLeft: '0' }} />
+                                                </span>
+                                                <span class='week-days-item-degress'>
+                                                    {item.temp.min}º <fa icon={['fad', 'temperature-low']} size='lg' style={{ '--fa-primary-color': '#2f54eb', marginLeft: '0' }} />
+                                                </span>
 
-                                            <span>
-                                                <fa icon={['fal', 'temperature-hot']} fixedWidth size='lg' />
-                                                {item.temp.max}º
-                                            </span>
-                                            <span>
-                                                <fa icon={['fal', 'temperature-frigid']} fixedWidth size='lg' />
-                                                {item.temp.min}º
-                                            </span>
-
-                                            <span class='week-days-item-description'>{item.weather.description}</span>
-                                        </a-space>
-                                    </a-list-item>
-                                )}
-                            />
-                        </a-col>
-                    </a-row>
-                </Transition>
-            </>
+                                                <span class='week-days-item-description'>{item.weather.description}</span>
+                                            </a-space>
+                                        </a-list-item>
+                                    )}
+                                />
+                            </a-col>
+                        </div>
+                    )
+                }
+            </Transition>
         )
     }
 })

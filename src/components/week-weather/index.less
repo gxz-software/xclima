@@ -1,18 +1,31 @@
 @paddingWeek: 1.5em;
 
-.fade-enter-active, .fade-leave-active {
-	transition: opacity 0.5s linear;
+//transition
+.switch-leave-to {
+
+	opacity: 0;
+	transform: translateX(20px);
 }
 
-.fade-enter-from, .fade-leave-to {
+.switch-enter-from {
+
 	opacity: 0;
 }
 
+.switch-enter-to, .switch-leave-from {
+	
+	opacity: 1;
+	transform: translateX(0);
+}
+
+.switch-enter-active, .switch-leave-active {
+
+	transition: all 0.3s ease;
+}
 
 .x-week {
 
 	padding: 2em;
-	// border:solid 1px blue;
 
 	.card-welcome {
 		
@@ -28,15 +41,18 @@
 		}
 	}
 
-	&-row {
+	&-content {
 		
-		width: 100%
+		width: 100%;
+		min-height: 300px;
+		display: flex;
+		justify-content: center;
 	}
 
 	.week-days {
 
 		padding: @paddingWeek;
-
+		
 		&-item {
 
 			text-align: center;
@@ -46,8 +62,13 @@
 				width: 8em;
 			}
 
-			&-description {
+			&-degress {
 
+				font-size: 18px;
+			}
+
+			&-description {
+				
 				text-transform: capitalize;
 			}
 		}
@@ -85,6 +106,12 @@
 		.week-days {
 
 			padding: @paddingWeek;
+
+			.svg-inline--fa {
+
+				--fa-secondary-color: #fff;
+				--fa-secondary-opacity: .6;
+			}
 		}
 	}
 }

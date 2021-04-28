@@ -13,13 +13,11 @@ import {
 
     falWind,
     falHumidity,
-    falClouds,
-    falTemperatureHot,
-    falTemperatureFrigid,
+    falClouds
 
 } from './icons/fal'
 
-import { fadEclipseAlt } from './icons/fad'
+import { fadEclipseAlt, fadTemperatureHigh, fadTemperatureLow } from './icons/fad'
 
 
 library.add(
@@ -33,11 +31,11 @@ library.add(
     falWind,
     falHumidity,
     falClouds,
-    falTemperatureHot,
-    falTemperatureFrigid,
 
     //FAD
     fadEclipseAlt,
+    fadTemperatureHigh,
+    fadTemperatureLow
 )
 
 export default function (app) {
