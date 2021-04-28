@@ -1,4 +1,4 @@
-import { defineComponent, reactive, watchEffect } from 'vue'
+import { defineComponent, reactive, watchEffect, onMounted, ref } from 'vue'
 import { Spin } from 'ant-design-vue'
 import { notification } from 'ant-design-vue'
 import pathIcon from './icons'
@@ -28,7 +28,6 @@ export default defineComponent({
                 lat: 0,
                 lon: 0
             },
-            hours: new Date().toString().substr(16, 5),
             clouds: 0,
             humidity: 0,
             temp: 0,
@@ -36,6 +35,10 @@ export default defineComponent({
             weather: {},
             loading: true,
         })
+
+        const timeString = ref('')
+
+        setInterval(() => timeString.value = new Date().toString().substr(16, 8), 1000)
 
         const handleClick = () => {
 
@@ -135,6 +138,7 @@ export default defineComponent({
         return {
 
             state,
+            timeString,
             handleClick,
         }
     },
@@ -143,7 +147,7 @@ export default defineComponent({
         const slots = {
 
             title: () => <a-tag>{this.state.city}</a-tag>,
-            extra: () => this.state.hours,
+            extra: () => this.timeString,
             cover: () => (
                 <div>
                     <img src={this.state.weather.icon ? pathIcon(this.state.weather.icon) : null} class='img-icon' alt='representação do clima em icone animado' />
