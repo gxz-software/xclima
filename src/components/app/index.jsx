@@ -75,7 +75,7 @@ export default defineComponent({
                 location.coords.lat = latitude
                 location.coords.lon = longitude
 
-                notification.success({ message: 'Geolocation OK!!' })
+                // notification.success({ message: 'Geolocation OK!!' })
 
             }).catch(err => {
 

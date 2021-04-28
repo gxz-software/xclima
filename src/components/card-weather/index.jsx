@@ -2,6 +2,7 @@ import { defineComponent, reactive, watchEffect } from 'vue'
 import { Spin } from 'ant-design-vue'
 import { notification } from 'ant-design-vue'
 import pathIcon from './icons'
+
 import './index.less'
 
 Spin.setDefaultIndicator({
@@ -14,7 +15,7 @@ export default defineComponent({
     props: {
 
         data: { type: Object, required: true },
-        city: { type: String, required: false }
+        city: { type: String, required: false },
     },
     emits: ['click'],
     setup(props, { emit }) {
@@ -48,6 +49,8 @@ export default defineComponent({
             if (!lat || !lon) throw new Error('Cannot find latitude or longitude.')
 
             const response = await fetch(`${import.meta.env.VITE_API_URL}weather?lat=${lat}&lon=${lon}&appid=${import.meta.env.VITE_API_ID}&units=metric&lang=pt_br`)
+
+            if (response.status !== 200) throw 'Houve um problema na API, tente novamente mais tarde.'
 
             return await response.json()
         }
@@ -86,7 +89,12 @@ export default defineComponent({
 
                 }).catch(err => {
 
-                    console.log('ERRO API', err)
+                    notification.error({
+
+                        message: 'Ops, houve um erro.',
+                        description: `${err}`
+                    })
+
                 }).finally(() => state.loading = false)
             }
         })
@@ -138,31 +146,14 @@ export default defineComponent({
             extra: () => this.state.hours,
             cover: () => (
                 <div>
-                    <img src={this.state.weather.icon ? pathIcon(this.state.weather.icon) : null} class='img-icon' />
+                    <img src={this.state.weather.icon ? pathIcon(this.state.weather.icon) : null} class='img-icon' alt='representação do clima em icone animado' />
 
                     <span class='weather-title'>{this.state.weather.description || '...'}</span>
                 </div>
-            )
-        }
 
-        const loading = {
-
+            ),
             default: () => (
-                <div class='content-spinner'>
-                    <a-spin spinning={true} size='large' tip='Carregando...' />
-                </div>
-            )
-        }
 
-        return (
-
-            <a-card
-                class='card-weather'
-                bordered
-                hoverable
-                v-slots={this.state.loading ? loading : slots}
-                onClick={this.handleClick}
-            >
                 <a-row>
                     <a-col class='col-data' span='12'>
                         <a-space size={5} direction='vertical'>
@@ -187,7 +178,27 @@ export default defineComponent({
                         <span class='degress-current'>{this.state.temp}º</span>
                     </a-col>
                 </a-row>
-            </a-card>
+            )
+        }
+
+        const loading = {
+
+            default: () => (
+                <div class='content-spinner'>
+                    <a-spin spinning={true} size='large' tip='Carregando...' />
+                </div>
+            )
+        }
+
+        return (
+
+            <a-card
+                class='card-weather'
+                bordered
+                hoverable
+                v-slots={this.state.loading ? loading : slots}
+                onClick={this.handleClick}
+            />
         )
     }
 })

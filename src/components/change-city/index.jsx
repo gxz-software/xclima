@@ -8,19 +8,20 @@ export default defineComponent({
     setup(props, { emit }) {
 
         const city = ref('')
-        const loading = ref(false)
+
 
         const handleSearch = () => {
 
             if (!city.value) return
 
             emit('changeCity', city.value)
+
+            city.value = ''
         }
 
         return {
 
             city,
-            loading,
             handleSearch
         }
     },
@@ -36,7 +37,6 @@ export default defineComponent({
 
                 <a-button
                     type='primary'
-                    loading={this.loading}
                     onClick={this.handleSearch}
                     v-slots={{
 
