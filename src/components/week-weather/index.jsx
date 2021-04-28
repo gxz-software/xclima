@@ -10,12 +10,16 @@ const Welcome = () => (
             bordered={false}
         >
             <h1>Bem vindo!</h1>
-            <p>xClima é um simples aplicativo de clima com base na sua localização(latitude, longitude) desenvolvido com dados meteorológicos da
+            <p>xClima é um simples aplicativo de clima com base na sua localização(latitude, longitude), desenvolvido com dados meteorológicos da API
                 <a href="https://openweathermap.org/" target='_blank'> OpenWeatherMap</a>.
-                Certifique-se de conceder permissão á sua localização, ou pesquise pela cidade desejada.
+                Certifique-se de conceder permissão de localização ou pesquise pelo nome da cidade.
             </p>
 
-            <p>Clique sobre o card principal para visualizar o clima dos próximos 6 dias. Esse app é apenas experimental, para mais informações visite o repositório no <a href='#' target='_blank'>Github</a>.</p>
+            <p>Clique para visualizar o clima dos próximos 6 dias. Esse app é apenas experimental, para mais informações visite o repositório no <a href='#' target='_blank'>Github</a>.</p>
+
+            <p style='text-align: center; margin-bottom: 0'>
+                © <a href="https://gxz.com.br/" target="_blank"><strong>GXZ</strong></a> 2016 - 2021.
+            </p>
         </a-card>
     </a-col>
 )
