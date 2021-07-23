@@ -4,10 +4,6 @@ import styleImport from 'vite-plugin-style-import'
 
 export default {
 
-    server: {
-
-        port: 8080
-    },
     css: {
 
         preprocessorOptions: {
@@ -16,7 +12,7 @@ export default {
 
                 modifyVars: {
 
-                    'primary-color': '#16d9ad',
+                    //'primary-color': '#16d9ad',
                 },
                 javascriptEnabled: true
             }
@@ -47,5 +43,9 @@ export default {
 
             { find: '@', replacement: resolve(__dirname, 'src') }
         ],
+    },
+    server: {
+
+        port: 8080
     },
 }
